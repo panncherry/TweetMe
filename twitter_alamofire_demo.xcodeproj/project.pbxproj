@@ -102,6 +102,7 @@
 			isa = PBXGroup;
 			children = (
 				083A2C5D216D727600CA6262 /* User.swift */,
+				083A2C5F216D72A600CA6262 /* Tweet.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -163,7 +164,6 @@
 				ED1AFD371E942B2500FD4B90 /* Assets.xcassets */,
 				ED1AFD391E942B2500FD4B90 /* LaunchScreen.storyboard */,
 				ED1AFD3C1E942B2500FD4B90 /* Info.plist */,
-				083A2C5F216D72A600CA6262 /* Tweet.swift */,
 			);
 			path = twitter_alamofire_demo;
 			sourceTree = "<group>";
