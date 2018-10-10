@@ -98,6 +98,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		080F768C216DA68A00918AF7 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				083A2C5D216D727600CA6262 /* User.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 		A7EAFA57FA35C74D37A8766E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -146,15 +154,15 @@
 		ED1AFD2F1E942B2500FD4B90 /* twitter_alamofire_demo */ = {
 			isa = PBXGroup;
 			children = (
-				ED1AFD341E942B2500FD4B90 /* Main.storyboard */,
+				080F768C216DA68A00918AF7 /* Models */,
 				ED1D23501EF7650B00C51ACC /* API */,
 				ED1D234A1EF6E3B800C51ACC /* View Controllers */,
 				EDC4B7361E98627100D836AC /* twitter_alamofire_demo.entitlements */,
 				ED1AFD301E942B2500FD4B90 /* AppDelegate.swift */,
+				ED1AFD341E942B2500FD4B90 /* Main.storyboard */,
 				ED1AFD371E942B2500FD4B90 /* Assets.xcassets */,
 				ED1AFD391E942B2500FD4B90 /* LaunchScreen.storyboard */,
 				ED1AFD3C1E942B2500FD4B90 /* Info.plist */,
-				083A2C5D216D727600CA6262 /* User.swift */,
 				083A2C5F216D72A600CA6262 /* Tweet.swift */,
 			);
 			path = twitter_alamofire_demo;
