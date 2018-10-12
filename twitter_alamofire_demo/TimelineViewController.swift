@@ -20,6 +20,13 @@ class TimelineViewController: UIViewController, UITableViewDataSource, UITableVi
         tableView.delegate = self
         tableView.estimatedRowHeight = 150
         tableView.rowHeight = UITableViewAutomaticDimension
+        
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(self.pullToRefresh(_:)),
+                          for: .valueChanged)
+        tableView.insertSubview(refreshControl, at: 0)
+        
+        fetchTweets()
     }
 
     override func didReceiveMemoryWarning() {
@@ -37,5 +44,21 @@ class TimelineViewController: UIViewController, UITableViewDataSource, UITableVi
         return cell
     }
     
-
+    func fetchTweets() {
+        APIManager.shared.getHomeTimeLine { (tweets, error) in
+            if let tweets = tweets {
+                self.tweets = tweets
+                self.tableView.reloadData()
+            } else if let error = error {
+                print("Error loading timeline tweets");
+            }
+        }
+    }
+    
+    @objc func  pullToRefresh(_ refresh: UIRefreshControl) {
+        fetchTweets()
+        tableView.reloadData()
+        refresh.endRefreshing()
+    }
+  
 }
