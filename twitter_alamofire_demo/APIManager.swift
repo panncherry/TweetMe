@@ -17,11 +17,9 @@ class APIManager: SessionManager {
     // MARK: TODO: Add App Keys
     static let consumerKey = "uFTmFW66AAMEUwx3rZlZDMSCf"
     static let consumerSecret = "LtlxIoQpBvHcqjpSMIA9Gs2E9wCJbr7xkx9EpSdBYoNedaZUgh"
-
     static let requestTokenURL = "https://api.twitter.com/oauth/request_token"
     static let authorizeURL = "https://api.twitter.com/oauth/authorize"
     static let accessTokenURL = "https://api.twitter.com/oauth/access_token"
-    
     static let callbackURLString = "alamoTwitter://"
     
     // MARK: Twitter API methods
@@ -48,6 +46,22 @@ class APIManager: SessionManager {
         }) { (error) in
             failure(error)
         }
+    }
+    
+    func logout() {
+        // 1. Clear current user
+        User.current = nil
+        
+        // TODO: 2. Deauthorize OAuth tokens
+        let keychain = Keychain()
+        do {
+            try keychain.remove("twitter_credentials")
+        } catch let error {
+            print("error: \(error)")
+        }
+        
+        // 3. Post logout notification
+        NotificationCenter.default.post(name: NSNotification.Name("didLogout"), object: nil)
     }
     
 
