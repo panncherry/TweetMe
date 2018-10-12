@@ -2,7 +2,7 @@
 //  TimelineViewController.swift
 //  twitter_alamofire_demo
 //
-//  Created by Aristotle on 2018-08-11.
+//  Created by Pann Cherry on 2018-10-11.
 //  Copyright © 2018 Charles Hieger. All rights reserved.
 //
 
@@ -13,6 +13,8 @@ class TimelineViewController: UIViewController, UITableViewDataSource, UITableVi
     @IBOutlet weak var tableView: UITableView!
     
     var tweets: [Tweet] = []
+    
+    var alertController: UIAlertController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +29,7 @@ class TimelineViewController: UIViewController, UITableViewDataSource, UITableVi
         tableView.insertSubview(refreshControl, at: 0)
         
         fetchTweets()
+        logOutAlert()
     }
 
     override func didReceiveMemoryWarning() {
@@ -60,5 +63,23 @@ class TimelineViewController: UIViewController, UITableViewDataSource, UITableVi
         tableView.reloadData()
         refresh.endRefreshing()
     }
-  
+    
+    @IBAction func on_logOut(_ sender: Any) {
+        present(alertController, animated: true)
+    }
+    
+    func logOutAlert() {
+        alertController = UIAlertController(title: "", message: "Are you sure you want to logout?", preferredStyle: .actionSheet)
+        
+        let logoutButton = UIAlertAction(title: "Logout", style: .destructive) { (action) in
+            self.view.window!.rootViewController?.presentedViewController?.dismiss(animated: true, completion: nil)
+            APIManager.shared.logout()
+        }
+        
+        let cancelButton = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
+        }
+        alertController.addAction(logoutButton)
+        alertController.addAction(cancelButton)
+    }
+    
 }

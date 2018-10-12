@@ -53,12 +53,7 @@ class APIManager: SessionManager {
         User.current = nil
         
         // TODO: 2. Deauthorize OAuth tokens
-        let keychain = Keychain()
-        do {
-            try keychain.remove("twitter_credentials")
-        } catch let error {
-            print("error: \(error)")
-        }
+      clearCredentials()
         
         // 3. Post logout notification
         NotificationCenter.default.post(name: NSNotification.Name("didLogout"), object: nil)
