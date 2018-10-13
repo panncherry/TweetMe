@@ -81,5 +81,4 @@ class TimelineViewController: UIViewController, UITableViewDataSource, UITableVi
         alertController.addAction(logoutButton)
         alertController.addAction(cancelButton)
     }
-    
 }

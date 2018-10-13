@@ -46,15 +46,43 @@ class TweetCell: UITableViewCell {
             atUserLabel.text = String(format: "@%@", tweet.user!.screenName!)
             dateLabel.text = tweet.createdAtString
             favoriteCountLabel.text = String(format: "%d", tweet.favoriteCount!)
-            //retweetCountLabel.text = String(tweet.retweetCount)
-            
+            retweetCountLabel.text = String(tweet.retweetCount!)
         }
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
 
+    @IBAction func didTapFavorite(_ sender: Any) {
+        if (tweet.favorited == false) {
+            APIManager.shared.favorite(tweet) { (tweet: Tweet?, error: Error?) in
+                if let  error = error {
+                    print("Error favoriting tweet: \(error.localizedDescription)")
+                } else if let tweet = tweet {
+                    print("Successfully favorited the following Tweet: \n\(tweet.text)")
+                    self.favoriteButton.setImage(#imageLiteral(resourceName: "favor-icon-red"), for: .normal)
+                    self.tweet.favoriteCount = tweet.favoriteCount! + 1
+                    self.favoriteCountLabel.text = String(format: "%d", tweet.favoriteCount!)
+                    self.tweet.favorited = true
+                }
+            }
+        } else {
+            APIManager.shared.unfavorite(tweet) { (tweet: Tweet?, error: Error?) in
+                if let  error = error {
+                    print("Error unfavoriting tweet: \(error.localizedDescription)")
+                } else if let tweet = tweet {
+                    print("Successfully unfavorited the following Tweet: \n\(tweet.text)")
+                    self.favoriteButton.setImage(#imageLiteral(resourceName: "favor-icon"), for: .normal)
+                    self.tweet.favoriteCount = tweet.favoriteCount! - 1
+                    self.favoriteCountLabel.text = String(format: "%d", tweet.favoriteCount!)
+                    self.tweet.favorited = false
+                }
+            }
+        }
+    }
+
+    
+    @IBAction func didTapRetweet(_ sender: Any) {
+    }
 }
