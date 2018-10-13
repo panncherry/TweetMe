@@ -8,13 +8,16 @@
 
 import UIKit
 
-class TimelineViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class TimelineViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate {
  
     @IBOutlet weak var tableView: UITableView!
     
     var tweets: [Tweet] = []
     
     var alertController: UIAlertController!
+    
+    var isMoreDataLoading = false
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -80,5 +83,28 @@ class TimelineViewController: UIViewController, UITableViewDataSource, UITableVi
         }
         alertController.addAction(logoutButton)
         alertController.addAction(cancelButton)
+    }
+    
+    func loadMoreData() {
+       // self.isMoreDataLoading = false
+        fetchTweets()
+        self.tableView.reloadData()
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if (!isMoreDataLoading) {
+            // Calculate the position of one screen length before the bottom of the results
+            let scrollViewContentHeight = tableView.contentSize.height
+            let scrollOffsetThreshold = scrollViewContentHeight - tableView.bounds.size.height
+            
+            // When the user has scrolled past the threshold, start requesting
+            if(scrollView.contentOffset.y > scrollOffsetThreshold && tableView.isDragging) {
+                
+                isMoreDataLoading = true
+                
+                // Code to load more results
+                loadMoreData()
+            }
+        }
     }
 }
