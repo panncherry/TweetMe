@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import DateToolsSwift
 
 class Tweet: NSObject {
     // MARK: Properties
@@ -57,7 +58,7 @@ class Tweet: NSObject {
         formatter.dateStyle = .short
         formatter.timeStyle = .none
         // Convert Date to String and set the createdAtString property
-        createdAtString = formatter.string(from: date)
+        createdAtString = date.shortTimeAgoSinceNow
     }
     
     static func tweets(with array: [[String: Any]]) -> [Tweet] {
