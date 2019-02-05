@@ -221,6 +221,7 @@
                                             <outlet property="retweetCountLabel" destination="Kep-Sw-x8j" id="FMj-IO-hDD"/>
                                             <outlet property="tweetLabel" destination="Dp5-xL-GSu" id="36R-ls-kb2"/>
                                             <outlet property="userNameLabel" destination="L18-mg-7Lh" id="Lug-Dv-evF"/>
+                                            <segue destination="3of-sE-Gmz" kind="showDetail" id="lse-0W-DSX"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -248,6 +249,69 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZlF-i2-Ves" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1660" y="36.431784107946029"/>
+        </scene>
+        <!--Detail View Controller-->
+        <scene sceneID="iYd-X5-E2u">
+            <objects>
+                <viewController id="3of-sE-Gmz" customClass="DetailViewController" customModule="twitter_alamofire_demo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="SRf-MR-KfX"/>
+                        <viewControllerLayoutGuide type="bottom" id="w88-Lb-ffn"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="obQ-Pb-PQa">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wDh-QT-TH3">
+                                <rect key="frame" x="8" y="39" width="114" height="100"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Aziz Ansari" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u1E-18-nFs">
+                                <rect key="frame" x="142" y="39" width="97" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="@azizansari" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lWf-SN-3tD">
+                                <rect key="frame" x="141" y="69" width="92" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BPf-Sk-T61">
+                                <rect key="frame" x="8" y="147" width="359" height="21"/>
+                                <string key="text">Can someone make a Friends style Master of None opening credits? Best one gets signed poster or something?                          tag #MoNFriends</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="10/10/2018" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xVP-Zy-ss5">
+                                <rect key="frame" x="8" y="211" width="85" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="BPf-Sk-T61" secondAttribute="trailing" constant="8" id="BQG-f9-q09"/>
+                            <constraint firstItem="BPf-Sk-T61" firstAttribute="top" secondItem="wDh-QT-TH3" secondAttribute="bottom" constant="8" id="axe-3Y-Rhl"/>
+                            <constraint firstItem="BPf-Sk-T61" firstAttribute="leading" secondItem="obQ-Pb-PQa" secondAttribute="leading" constant="8" id="he1-Pw-Iwz"/>
+                            <constraint firstItem="xVP-Zy-ss5" firstAttribute="top" secondItem="BPf-Sk-T61" secondAttribute="bottom" constant="8" id="nwI-5U-beo"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="ProfilelPic" destination="wDh-QT-TH3" id="hBb-AI-Gmg"/>
+                        <outlet property="atUserLabel" destination="lWf-SN-3tD" id="XRN-cd-RFn"/>
+                        <outlet property="dateLabel" destination="xVP-Zy-ss5" id="dtI-2Y-iAL"/>
+                        <outlet property="tweetLabel" destination="BPf-Sk-T61" id="Sw1-bR-7Zo"/>
+                        <outlet property="userNameLabel" destination="u1E-18-nFs" id="Un4-hU-vu9"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="e7n-Jy-vlW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2446" y="36"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="WXZ-z8-8LI">
