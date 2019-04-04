@@ -1,6 +1,6 @@
-# Twitter
+# TweetMe
 
-**Twitter** is a basic twitter app that allows users to view, compose, favorite, and retweet tweets using the [Twitter API](https://apps.twitter.com/).
+**TweetMe** is a basic twitter app that allows users to view, compose, favorite, and retweet tweets using the [Twitter API](https://apps.twitter.com/).
 
 
 
